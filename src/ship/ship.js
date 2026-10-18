@@ -1,4 +1,4 @@
-export {Ship};
+export { Ship };
 
 class Ship {
   constructor(shipName, lengthShip) {
@@ -6,6 +6,7 @@ class Ship {
     this.lengthShip = lengthShip;
     this.hitsTaken = 0;
     this.sunkStatus = false;
+    this.shipCoordinates = [];
   };
 
   hit() {
