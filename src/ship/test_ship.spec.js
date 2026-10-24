@@ -1,10 +1,10 @@
 import { Ship } from "./ship";
 
 describe("test Ship class", () => {
-  const testShipObj = new Ship("alebarda", 4);
+  const testShipObj = new Ship(4);
   
-  test("ship name", () => {
-    expect(testShipObj.shipName).toBe("alebarda");
+  test("ship length", () => {
+    expect(testShipObj.lengthShip).toBe(4);
   });
 
 
