@@ -9,21 +9,30 @@ describe("test Gameboard class", () => {
     expect(testGameboard.ocean[0][0].position).toEqual([0, 0]);
   });
 
+  testGameboard.placeShip("alebarda", [[1,1], [2,1], [3,1]])
+
   test.skip("check placement of ships in the gameboard", () => {
-
-
+    expect(testGameboard.ocean[3][1].ship).toBe("alebarda");
   });
 
-  const coordinates = [
-    [1,2],
-    [1,3],
-    [1,4],
-  ];
+  test.skip("check return value of method that eval the usability of squares", () => {
+    expect(testGameboard.checkIfMultipleSquaresAreUsable([[1,2], [-1,0]])).toEqual(false);
+  });
+
+  const coordinates = [[1,2], [1,3], [1,4]];
   const coordinatesOfRowsAndColl = testGameboard.getSquaresRowsAndColumns(coordinates);
   
-  test("check the rows and columns of any given coordinates", () => {
+  test.skip("check the rows and columns of any given coordinates", () => {
     expect(coordinatesOfRowsAndColl.rowsSquares).toEqual([1]);
     expect(coordinatesOfRowsAndColl.columnsSquares).toEqual([2, 3, 4]);
+  });
+
+  test.skip("get us the alignment of the coordinates", () => {
+    expect(testGameboard.getAlignmentOfSquares(coordinates)).toBe("horizontal");
+  });
+
+  test.skip("check alignement correctness", () => {
+    expect(testGameboard.checkAlignmentCorrectness(coordinates)).toEqual(true);
   });
 
   testGameboard.receiveAttack([1, 2]);

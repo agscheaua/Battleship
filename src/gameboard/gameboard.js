@@ -30,9 +30,15 @@ class Gameboard {
 
   // place a ship in the gameboard, based on an array of coordinates;
   placeShip(ship, coordinatesShip) {
-    const areAllSquaresUsable = this.checkIfMultipleSquaresAreUsable(coordinatesShip);
-    if (areAllSquaresUsable === false) return "Invalid position";
+    if (this.checkIfMultipleSquaresAreUsable(coordinatesShip) === false) return "Invalid position, unusuable square";
+    if (this.checkAlignmentCorrectness(coordinatesShip) === false) return "Invalid position, not in sequence";
     
+    for (let i = 0; i < coordinatesShip.length; i++) {
+      const currSquare = coordinatesShip[i];
+      this.ocean[currSquare[0]][currSquare[1]].ship = ship;
+      this.ocean[currSquare[0]][currSquare[1]].usable = false;
+    };
+
 
   };
 
@@ -43,18 +49,18 @@ class Gameboard {
     for (let i = 0; i < squares.length; i++) {
       const currSquareCoordinate = squares[i];
       const square = this.ocean[currSquareCoordinate[0]][currSquareCoordinate[1]];
-      if (square.usable !== true) {
+      if (square.usable !== true || square === undefined) {
         result = false;
         break;
       };
     };
-
     return result;
   };
 
   // check if a square is empty, returns a boolean;
   checkIfSquareIsUsable(square) {
-    if (square.usable !== true) {
+    if (this.ocean[square[0]][square[1]].usable !== true ||
+        this.ocean[square[0]][square[1]] === undefined) {
       return false;
     } else {
       return true;
@@ -63,33 +69,31 @@ class Gameboard {
 
   // returns an obj with all rows and columns of squares in form of properties;
   getSquaresRowsAndColumns(squares) {
-    let rowsSquares = [];
-    let columnsSquares = [];
+    let rowsIndices = [];
+    let columnsIndices = [];
 
     for (let i = 0; i < squares.length; i++) {
-      if (rowsSquares.includes(squares[i][0]) === false) {
-        rowsSquares.push(squares[i][0]);
+      if (rowsIndices.includes(squares[i][0]) === false) {
+        rowsIndices.push(squares[i][0]);
       };
-      if (columnsSquares.includes(squares[i][1]) === false) {
-        columnsSquares.push(squares[i][1]);
+      if (columnsIndices.includes(squares[i][1]) === false) {
+        columnsIndices.push(squares[i][1]);
       };
     };
 
     return {
-      rowsSquares,
-      columnsSquares,
+      rowsIndices,
+      columnsIndices,
     };
   };
 
-  // get us the possition in witch the ship will be placed on the gameboard;
-  checkAlignmentOfSquares(squares) {
+  // get us the possition in witch the ship will be placed on the gameboard,
+  // if the squares are not place one after another, returns false;
+  getAlignmentOfSquares(squares) {
     const squaresRowsAndColumns = this.getSquaresRowsAndColumns(squares);
 
-    const rowsSquares = squaresRowsAndColumns.rowsSquares;
-    const columnsSquares =squaresRowsAndColumns.columnsSquares;
-
-    let rowsLength = rowsSquares.length;
-    let columnsLength = columnsSquares.length;
+    let rowsLength = squaresRowsAndColumns.rowsIndices.length;
+    let columnsLength = squaresRowsAndColumns.columnsIndices.length;
 
     let alignment;
 
@@ -103,6 +107,46 @@ class Gameboard {
       return false;
     };
     return alignment;
+  };
+
+  // check the correctness of the sequence in with the row val or column val are ordered;
+  checkAlignmentCorrectness(squares) {
+    const squaresRowsAndColumns = this.getSquaresRowsAndColumns(squares);
+    const squaresAlignement = this.getAlignmentOfSquares(squares);
+
+    let areCorrectlyAligned = true;
+
+    if (squaresAlignement === false) return false;
+    if (squaresAlignement === "neutral") return true;
+
+    if (squaresAlignement === "horizontal") {
+      const currColumnIndices = squaresRowsAndColumns.columnsIndices;
+      for (let i = 0; i < currColumnIndices.length; i++) {
+        if (i === 0) continue;
+        if (currColumnIndices[i] !== currColumnIndices[i - 1] + 1) {
+          areCorrectlyAligned = false;
+          break;
+        };
+      };
+      return areCorrectlyAligned;
+    };
+
+    if (squaresAlignement === "vertical") {
+      const currRowsIndices = squaresRowsAndColumns.rowsIndices;
+      for (let i = 0; i < currRowsIndices.length; i++) {
+        if (i === 0) continue;
+        if (currRowsIndices[i] !== currRowsIndices[i - 1] + 1) {
+          areCorrectlyAligned = false;
+          break;
+        };
+      };
+      return areCorrectlyAligned;
+    }
+  };
+
+  // make squares that are near a ship unusuable;
+  makeSquaresUnusuable(squares) {
+    
   };
 
   // receive attack, change the square struk status as true, and run hit() method on ship if exist; 
