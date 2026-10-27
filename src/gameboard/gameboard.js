@@ -39,7 +39,7 @@ class Gameboard {
       this.ocean[currSquare[0]][currSquare[1]].usable = false;
     };
 
-
+    this.makeSquaresUnusuable(coordinatesShip);
   };
 
   // can be used with an array that has as items arrays of coordinates for a square,
@@ -146,7 +146,34 @@ class Gameboard {
 
   // make squares that are near a ship unusuable;
   makeSquaresUnusuable(squares) {
-    
+    for (let i = 0; i < squares.length; i++) {
+      this.makeAllSquareNeighboursUnusuable(squares[i]);
+    };
+  };
+
+  // make all the neighbours of a given square unusuable;
+  makeAllSquareNeighboursUnusuable(sqare) {
+    const currSquare = this.ocean[sqare[0]][sqare[1]].position;
+
+    const currSquareRow = currSquare[0];
+    const currSquareColumn = currSquare[1];
+
+    let allNeighbourSquares = [];
+    allNeighbourSquares.push([currSquareRow - 1, currSquareColumn - 1]);
+    allNeighbourSquares.push([currSquareRow -1, currSquareColumn]);
+    allNeighbourSquares.push([currSquareRow - 1, currSquareColumn + 1]);
+    allNeighbourSquares.push([currSquareRow, currSquareColumn - 1]);
+    allNeighbourSquares.push([currSquareRow, currSquareColumn + 1]);
+    allNeighbourSquares.push([currSquareRow + 1, currSquareColumn - 1]);
+    allNeighbourSquares.push([currSquareRow + 1, currSquareColumn]);
+    allNeighbourSquares.push([currSquareRow + 1, currSquareColumn + 1]);
+
+    for (let i = 0; i < allNeighbourSquares.length; i++) {
+      if (this.ocean[allNeighbourSquares[i][0]] === undefined) continue;
+      if (this.ocean[allNeighbourSquares[i][0]][allNeighbourSquares[i][1]] === undefined) continue;
+      
+      this.ocean[allNeighbourSquares[i][0]][allNeighbourSquares[i][1]].usable = false;
+    };
   };
 
   // receive attack, change the square struk status as true, and run hit() method on ship if exist; 

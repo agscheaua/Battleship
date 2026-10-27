@@ -15,6 +15,10 @@ describe("test Gameboard class", () => {
     expect(testGameboard.ocean[3][1].ship).toBe("alebarda");
   });
 
+  test.skip("check if placing a ship make all the neighbor sqares unusable", () => {
+    expect(testGameboard.ocean[4][1].usable).toEqual(false);
+  });
+
   test.skip("check return value of method that eval the usability of squares", () => {
     expect(testGameboard.checkIfMultipleSquaresAreUsable([[1,2], [-1,0]])).toEqual(false);
   });
@@ -33,6 +37,12 @@ describe("test Gameboard class", () => {
 
   test.skip("check alignement correctness", () => {
     expect(testGameboard.checkAlignmentCorrectness(coordinates)).toEqual(true);
+  });
+
+  //testGameboard.makeSquaresUnusuable([[0,1],[0,2],[0,3]]);
+
+  test.skip("test the usable prop of a sqare that is near a neutral ship", () => {
+    expect(testGameboard.ocean[0][4].usable).toEqual(false);
   });
 
   testGameboard.receiveAttack([1, 2]);
