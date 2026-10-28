@@ -1,0 +1,84 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  cursor: default;
+}
+
+.header {
+  border-bottom: 1px solid black;
+}
+
+.headerTitle {
+  margin: 20px 0px 5px 20px;
+  font-size: 1.3rem;
+}
+
+.main {
+  font-size: 1.3rem;
+  display: grid;
+  grid-template-rows: 1fr 15fr 1fr 1fr;
+}
+
+.infoGame {
+  margin: 5px 0px 5px 20px
+}
+
+.preorderedShips {
+  margin: 0px 20px 5px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.playerBoard {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+.rivalBoard {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+.playerBoardButtons {
+  margin-left: 20px;
+}
+
+.boardControlButton {
+  font-size: 1.1rem;
+  border-radius: 4px;
+  border: 0;
+  background-color: white;
+  text-decoration-line: underline;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.boardControlButton:hover {
+  text-decoration-color: darkorchid;
+}
+
+.roundControls {
+  margin-left: 20px;
+}
+
+.roundControlButton {
+  font-size: 1.3rem;
+  border-radius: 4px;
+  border: 0;
+  background-color: white;
+  text-decoration-line: underline;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.roundControlButton:hover {
+  text-decoration-color: darkorchid;
+}

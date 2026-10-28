@@ -3,7 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Template Repository</title>
+    <title>Battleship</title>
   </head>
-  <body></body>
+  <body>
+    <header class = "header">
+      <div class = "headerTitle">Battleship is a classic two-player strategy guessing game where 
+        opponents try to find and sink each other's hidden naval fleet on a concealed grid
+      </div>
+    </header>
+    <main class = "main">
+      <div class = "infoGame">
+        Press "Start" to begin the game!
+      </div>
+
+      <section class = "preorderedShips">
+        <div class = "playerBoard">
+        </div>
+        <div class = "rivalBoard">
+        </div>
+      </section>
+
+      <div class = "playerBoardButtons">
+        <button class = "randomPattern boardControlButton">
+          Random
+        </button>
+        <button class = "deleteAllShips boardControlButton">
+          Delete
+        </button>
+        <button class = "rotateShip boardControlButton">
+          Rotate
+        </button>
+      </div>
+
+      <div class = "roundControls">
+        <button class = "startRound roundControlButton">
+          Start
+        </button>
+        <button class = "restartRound roundControlButton">
+          Restart
+        </button>
+      </div>
+
+      <section hidden class = "placeShipsManually">
+        <div class = "allShips">
+        </div>
+        <div class = "gameboard">
+        </div>
+      </section>
+    
+    </main>
+    <footer>
+
+    </footer>
+  </body>
 </html>
