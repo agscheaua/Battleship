@@ -10,6 +10,8 @@ class Gameboard {
 
   // the 2D array that contains the gameboard, we can access any square with ocean[row][column];
   ocean = this.createOcean();
+  missedShots = [];
+  allShipsOnTheGameboard = [];
 
   // returns a 2D array, that is accesed with ocean[row][column];
   createOcean() {
@@ -37,6 +39,7 @@ class Gameboard {
       const currSquare = coordinatesShip[i];
       this.ocean[currSquare[0]][currSquare[1]].ship = ship;
       this.ocean[currSquare[0]][currSquare[1]].usable = false;
+      ship.coordinates.push(coordinatesShip[i]);
     };
 
     this.makeSquaresUnusuable(coordinatesShip);
@@ -183,6 +186,8 @@ class Gameboard {
     squareHit.struck = true;
     if (squareHit.ship !== undefined) {
       squareHit.ship.hit();
+    } else if (squareHit.ship === undefined) {
+      this.missedShots.push(squareHit);
     };
     return;
   };

@@ -11,8 +11,8 @@ class Ship {
 
   // increment with 1 the val of hitsTaken property, returns nothing;
   hit() {
-    this.hitsTaken =+ 1;
-    return
+    this.hitsTaken += 1;
+    return;
   };
 
   // check if the ship have been sunk, by reading the sunkStatus propery, return a boolean; 

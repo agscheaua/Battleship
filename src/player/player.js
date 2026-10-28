@@ -5,19 +5,22 @@ import { Gameboard } from "../gameboard/gameboard.js";
 
 class Player {
   constructor() {
-    this.carrier4 = new Ship("Carrier", 4);
-    this.battleship3_1 = new Ship("Battleship_1", 3);
-    this.battleship3_2 = new Ship("Battleship_2", 3);
-    this.cruiser2_1 = new Ship("Cruiser_1", 2);
-    this.cruiser2_2 = new Ship("Cruiser_2", 2);
-    this.cruiser2_3 = new Ship("Cruiser_3", 2);
-    this.destroyer1_1 = new Ship("Destroyer_1", 1);
-    this.destroyer1_2 = new Ship("Destroyer_2", 2);
-    this.destroyer1_3 = new Ship("Destroyer_3", 3);
-    this.destroyer1_4 = new Ship("Destroyer_4", 4);
+    this.carrier = new Ship(4);
+    this.battleship1 = new Ship(3);
+    this.battleship2 = new Ship(3);
+    this.cruiser1 = new Ship(2);
+    this.cruiser2 = new Ship(2);
+    this.cruiser3 = new Ship(2);
+    this.destroyer1 = new Ship(1);
+    this.destroyer2 = new Ship(2);
+    this.destroyer3 = new Ship(3);
+    this.destroyer4 = new Ship(4);
 
     this.selfGameBoard = new Gameboard();
 
     this.rivalGameBoard = new Gameboard();
   };
 };
+
+const player = new Player();
+const computer = new Player();
