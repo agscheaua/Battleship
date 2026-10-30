@@ -1,8 +1,9 @@
-export {Player};
-
 import { Ship } from "../ship/ship.js";
 import { Gameboard } from "../gameboard/gameboard.js";
 
+export { Player }; 
+
+// player class;
 class Player {
   constructor() {
     this.carrier = new Ship(4);
@@ -22,5 +23,3 @@ class Player {
   };
 };
 
-const player = new Player();
-const computer = new Player();

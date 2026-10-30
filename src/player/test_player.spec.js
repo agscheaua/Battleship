@@ -1,5 +1,3 @@
-import { Ship } from "../ship/ship.js";
-import { Gameboard } from "../gameboard/gameboard.js";
 import { Player } from "./player.js";
 
 describe("test player class", () => {
@@ -16,7 +14,6 @@ describe("test player class", () => {
     expect(testPlayer.selfGameBoard.ocean[1][3].ship === testPlayer.carrier).toEqual(true);
     expect(testPlayer.selfGameBoard.ocean[1][4].ship === testPlayer.carrier).toEqual(true);
   });
-
 
   test.skip("try to place a ship on another ship", () => {
     const placeShipBad = testPlayer.selfGameBoard.placeShip(testPlayer.battleship1, [[1,2], [2,2], [3,2]]);

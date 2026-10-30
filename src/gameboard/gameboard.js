@@ -6,7 +6,7 @@ class Gameboard {
   };
 
   // the indexes of the rows and columns;
-  #squares = [0,1,2,3,4,5,6,7,8,9];
+  squares = [0,1,2,3,4,5,6,7,8,9];
 
   // the 2D array that contains the gameboard, we can access any square with ocean[row][column];
   ocean = this.createOcean();
@@ -16,9 +16,9 @@ class Gameboard {
   // returns a 2D array, that is accesed with ocean[row][column];
   createOcean() {
     let tempOcean = [];
-    for (let row = 0; row < this.#squares.length; row++) {
+    for (let row = 0; row < this.squares.length; row++) {
       tempOcean[row] = [];
-      for (let column = 0; column < this.#squares.length; column++) {
+      for (let column = 0; column < this.squares.length; column++) {
         tempOcean[row][column] = {
           position: [row, column],
           usable: true,

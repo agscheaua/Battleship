@@ -1,4 +1,9 @@
 import './styles.css';
-import { Gameboard } from './gameboard/gameboard.js';
-import { Ship } from './ship/ship.js';
 
+import { createSquares } from './UI/UI.js';
+
+document.addEventListener("click", () => {
+  console.log(3)
+});
+
+createSquares();
