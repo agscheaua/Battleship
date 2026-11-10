@@ -6,20 +6,15 @@ export { Player };
 // player class;
 class Player {
   constructor() {
-    this.carrier = new Ship(4);
-    this.battleship1 = new Ship(3);
-    this.battleship2 = new Ship(3);
-    this.cruiser1 = new Ship(2);
-    this.cruiser2 = new Ship(2);
-    this.cruiser3 = new Ship(2);
-    this.destroyer1 = new Ship(1);
-    this.destroyer2 = new Ship(2);
-    this.destroyer3 = new Ship(3);
-    this.destroyer4 = new Ship(4);
-
-    this.selfGameBoard = new Gameboard();
-
-    this.rivalGameBoard = new Gameboard();
   };
+  carrier = new Ship(4);
+  battleship1 = new Ship(3);
+  battleship2 = new Ship(3);
+  cruiser1 = new Ship(2);
+  cruiser2 = new Ship(2);
+  cruiser3 = new Ship(2);
+
+  selfGameBoard = new Gameboard();
+  rivalGameBoard = new Gameboard();
 };
 

@@ -23,14 +23,14 @@
 }
 
 .infoGame {
-  margin: 5px 0px 5px 20px
+  margin: 5px 0px 5px 20px;
 }
 
 .preorderedShips {
   margin: 0px 20px 5px 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 20px;
 }
 
 .playerBoard {
@@ -81,4 +81,8 @@
 
 .roundControlButton:hover {
   text-decoration-color: darkorchid;
+}
+
+.squareGame {
+  border: 1px solid black;
 }

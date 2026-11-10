@@ -35,10 +35,14 @@ class Gameboard {
     if (this.checkIfMultipleSquaresAreUsable(coordinatesShip) === false) return "Invalid position, unusuable square";
     if (this.checkAlignmentCorrectness(coordinatesShip) === false) return "Invalid position, not in sequence";
     
+    this.allShipsOnTheGameboard.push(ship);
+
     for (let i = 0; i < coordinatesShip.length; i++) {
       const currSquare = coordinatesShip[i];
+
       this.ocean[currSquare[0]][currSquare[1]].ship = ship;
       this.ocean[currSquare[0]][currSquare[1]].usable = false;
+
       ship.coordinates.push(coordinatesShip[i]);
     };
 
