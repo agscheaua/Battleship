@@ -1,0 +1,5 @@
+1. I need to see my ships on my game board.
+2. I need to see the missed shots fired at my game board.
+3. I need to see parts of my ships that have been hit.
+4. After a ship have been hit 2 times 
+

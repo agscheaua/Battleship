@@ -1,27 +1,10 @@
-import { Player } from "../player/player.js";
+import { bothPlayers } from "../game_players/game_players.js";
 
 export {createSquares};
-export {changeSquaresColorShipIsOnThem};
+export {changeColorSquaresShipsPlayer};
 
-// returns an obj containg the player and the rival;
-function createPlayers() {
-  const player = new Player();
-  const rival = new Player();
 
-  return {
-    player,
-    rival,
-  };
-};
-
-// reference to the player and rival obj;
-const bothPlayers = createPlayers();
-
-// create two ships to test the functionality of the UI;
-bothPlayers.player.selfGameBoard.placeShip(bothPlayers.player.carrier, [[1,2], [1,3], [1,4], [1,5]]);
-bothPlayers.rival.selfGameBoard.placeShip(bothPlayers.rival.carrier, [[3,1], [4,1], [5,1], [6,1]]); 
-
-// create the squares of the gameboard and assign them class and data atr.;
+// create squares of gameboard, assign them classes and data atr, return nothing;
 function createSquares() {
   const squaresIndices = [0,1,2,3,4,5,6,7,8,9];
 
@@ -42,12 +25,12 @@ function createSquares() {
       newSquarePlayer.setAttribute("data-row", tempRow);
       newSquarePlayer.setAttribute("data-column", tempColumn);
       newSquarePlayer.classList.add("squareGame");
-      newSquarePlayer.classList.add(`${rowAndColumStr}`);
+      newSquarePlayer.classList.add(`square${rowAndColumStr}`);
 
       newSquareRival.setAttribute("data-row", tempRow);
       newSquareRival.setAttribute("data-column", tempColumn);
       newSquareRival.classList.add("squareGame");
-      newSquareRival.classList.add(`${rowAndColumStr}`);
+      newSquareRival.classList.add(`square${rowAndColumStr}`);
 
       squarePlayer.appendChild(newSquarePlayer);
       squareRival.appendChild(newSquareRival);
@@ -55,8 +38,8 @@ function createSquares() {
   };
 };
 
-// change color of the squares that the ships are sitting on the player gameboard;
-function changeSquaresColorShipIsOnThem() {
+// change color of squares that ships of player are sitting, on gameboard, return nothing;
+function changeColorSquaresShipsPlayer() {
   const allShipsOnPlayerBoard = bothPlayers.player.selfGameBoard.allShipsOnTheGameboard;
     
   for (let i = 0; i < allShipsOnPlayerBoard.length; i++) {
@@ -65,7 +48,7 @@ function changeSquaresColorShipIsOnThem() {
   };
 };
 
-// change the color of squares that a specific ship is sitting on;
+// change color of squares that a given arg ship is sitting on, return nothing;
 function changeColorOfSquaresOneShipSit(ship) {
   for (let i = 0; i < ship.coordinates.length; i++) {
     const currSquare = ship.coordinates[i];
@@ -73,9 +56,9 @@ function changeColorOfSquaresOneShipSit(ship) {
     const rowStr = String(currSquare[0]);
     const columnStr = String(currSquare[1]);
 
-    const rowAndColumnStr = rowStr.concat(columnStr);
+    const squareInBoard = "square" + (rowStr.concat(columnStr));
 
-    const currSquareInGameboard = document.querySelector(`.00`);
+    const currSquareInGameboard = document.querySelector(`.${squareInBoard}`);
     currSquareInGameboard.style.backgroundColor = "red"; 
   };
 };
